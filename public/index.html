@@ -54,6 +54,34 @@
     
     <h3>Made by Parth Mehra</h3>
     <script src="/socket.io/socket.io.js"></script>
+    <script>
+  const toggle = document.getElementById("darkModeToggle");
+  const body = document.body;
+
+  // Check if user has a saved preference
+  if (localStorage.getItem("darkMode") === "enabled") {
+    body.classList.add("dark-mode");
+  }
+
+  toggle.addEventListener("click", () => {
+    body.classList.toggle("dark-mode");
+
+    // Save preference to localStorage
+    if (body.classList.contains("dark-mode")) {
+      localStorage.setItem("darkMode", "enabled");
+      toggle.innerText = "☀️ Light Mode";
+    } else {
+      localStorage.setItem("darkMode", "disabled");
+      toggle.innerText = "🌙 Dark Mode";
+    }
+  });
+
+  // Set initial button text
+  if (body.classList.contains("dark-mode")) {
+    toggle.innerText = "☀️ Light Mode";
+  }
+</script>
+
    
 <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.28.0/moment.min.js" integrity="sha512-Q1f3TS3vSt1jQ8AwP2OuenztnLU6LwxgyyYOG1jgMW/cbEMHps/3wjvnl1P3WTrF3chJUWEoxDUEjMxDV8pujg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
